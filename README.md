@@ -84,7 +84,7 @@ To generate a client secrets file:
 7- Click Download JSON  
 
 #### 2-2-3- Somes example of methode on bucket ans object   
-Bucket  
+`Bucket`  
 ```python
 # Create bucket
 req = client.buckets().insert(
@@ -96,7 +96,7 @@ print json.dumps(resp, indent=2)
 # Delete bucket
 client.buckets().delete(bucket=bucket_name).execute()
 ```
-Object
+`Object`
 ```python
 # Create object
 # The destination object resource is entirely optional. If empty, we use
