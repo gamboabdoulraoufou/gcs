@@ -69,7 +69,9 @@ gsutil config
 #### 2-2-1- Set up environment  
 ```sh
 virtualenv env
-./env/bin/pip install --upgrade google-api-python-client httplib2 argparse
+./env/bin/pip install google-api-python-client 
+./env/bin/pip install httplib2 
+./env/bin/pip install argparse
 source ./env/bin/activate
 ```
 
