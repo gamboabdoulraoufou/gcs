@@ -65,15 +65,15 @@ gsutil config
 
 ```
 
-#### 2-2- Using JSON API for Python  
-**1- Set up environment**
+#### 2-2- Using JSON API for Python    
+#### 2-2-1- Set up environment  
 ```sh
 virtualenv env
 ./env/bin/pip install --upgrade google-api-python-client httplib2 argparse
 source ./env/bin/activate
 ```
 
-**2- Create a client secrets file**  
+#### 2-2-2- Create a client secrets file 
 To generate a client secrets file:    
 1- Go to the Google Developers Console.    
 2- Select a project to which the client ID will be associated.  
@@ -83,7 +83,7 @@ To generate a client secrets file:
 6- Click Create Client ID.  
 7- Click Download JSON  
 
-**3- Methodes**  
+#### 2-2-3- Somes example of methode on bucket ans object   
 Bucket  
 ```python
 # Create bucket
@@ -162,7 +162,8 @@ client.objects().delete(
         object=object_name).execute()
 ```
 
-**4- Create your code file**
+#### 2-2-4- Complete example: loading data
+**Create sample file**
 ```python
 """
 You can also get help on all the command-line flags the program understands
@@ -253,7 +254,7 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-**5- Run the sample**  
+**Run the sample**  
 _1- Generate an authentication URL_  
 ```sh
 python storage-sample.py --noauth_local_webserver
