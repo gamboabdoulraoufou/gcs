@@ -65,7 +65,7 @@ gsutil config
 
 ```
 
-#### 2-2- Using JSON API for Python**  
+#### 2-2- Using JSON API for Python  
 **1- Set up environment**
 ```sh
 virtualenv env
@@ -179,7 +179,7 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-**4- Run the sample**
+**4- Run the sample**  
 _1- Generate an authentication URL_  
 ```sh
 python storage-sample.py --noauth_local_webserver
