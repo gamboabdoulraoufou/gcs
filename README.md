@@ -149,7 +149,9 @@ while not done:
         print 'Download %d%%.' % int(status.progress() * 100)
     print 'Download Complete!'
 print fh.getvalue()
+```
 
+```python
 # Delete object
 client.objects().delete(
         bucket=bucket_name,
