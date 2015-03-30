@@ -48,14 +48,14 @@ update gsutil
 ### 2- Set-up access to protected data
 **Using Credentials**
 ```sh
-# 1- Open new command prompt instance
+# 1- Open new command prompt instance  
 
-# 2- Run this code
-gsutil config
+# 2- Run this code  
+gsutil config  
 
-# 3- Copy and paste the URL into a browser window
+# 3- Copy and paste the URL into a browser window  
 
-# 4- Clic the allow access button
+# 4- Clic the allow access button  
 
 # 5- Copy the authorization code that appears on the next page into the gsutil prompt and press Enter
 
@@ -73,9 +73,9 @@ virtualenv env
 source ./env/bin/activate
 ```
 
-_2- Create a client secrets file_
-To generate a client secrets file:  
-1- Go to the Google Developers Console.  
+_2- Create a client secrets file_  
+To generate a client secrets file:    
+1- Go to the Google Developers Console.    
 2- Select a project to which the client ID will be associated.  
 3- In the left sidebar, select APIs & auth > Credentials.  
 4- Click Create new Client ID.  
