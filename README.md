@@ -83,7 +83,86 @@ To generate a client secrets file:
 6- Click Create Client ID.  
 7- Click Download JSON  
 
-**3- Create your code file**
+**3- Methodes**  
+Bucket  
+```python
+# Create bucket
+req = client.buckets().insert(
+        project=project_id,
+        body={'name': bucket_name})
+resp = req.execute()
+print json.dumps(resp, indent=2)
+
+# Delete bucket
+client.buckets().delete(bucket=bucket_name).execute()
+```
+Object
+```python
+# Create object
+# The destination object resource is entirely optional. If empty, we use
+# the source object's metadata.
+if reuse_metadata:
+    destination_object_resource = {}
+else:
+    destination_object_resource = {
+            'contentLanguage': 'en',
+            'metadata': {'my-key': 'my-value'},
+    }
+req = client.objects().copy(
+        sourceBucket=bucket_name,
+        sourceObject=old_object,
+        destinationBucket=bucket_name,
+        destinationObject=new_object,
+        body=destination_object_resource)
+resp = req.execute()
+print json.dumps(resp, indent=2)
+
+# List objects
+fields_to_return = 'nextPageToken,items(bucket,name,metadata(my-key))'
+req = client.objects().list(
+        bucket=bucket_name,
+        fields=fields_to_return,    # optional
+        maxResults=42)              # optional
+
+# If you have too many items to list in one request, list_next() will
+# automatically handle paging with the pageToken.
+while req is not None:
+    resp = req.execute()
+    print json.dumps(resp, indent=2)
+    req = client.objects().list_next(req, resp)
+
+# Get Metadata
+req = client.objects().get(
+        bucket=bucket_name,
+        object=object_name,
+        fields='bucket,name,metadata(my-key)',    # optional
+        generation=generation)                    # optional
+resp = req.execute()
+print json.dumps(resp, indent=2)
+
+# Get Payload Data
+req = client.objects().get_media(
+        bucket=bucket_name,
+        object=object_name,
+        generation=generation)    # optional
+# The BytesIO object may be replaced with any io.Base instance.
+fh = io.BytesIO()
+downloader = http.MediaIoBaseDownload(fh, req, chunksize=1024*1024)
+done = False
+while not done:
+    status, done = downloader.next_chunk()
+    if status:
+        print 'Download %d%%.' % int(status.progress() * 100)
+    print 'Download Complete!'
+print fh.getvalue()
+
+# Delete object
+client.objects().delete(
+        bucket=bucket_name,
+        object=object_name).execute()
+```
+
+**4- Create your code file**
 ```python
 """
 You can also get help on all the command-line flags the program understands
@@ -174,7 +253,7 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-**4- Run the sample**  
+**5- Run the sample**  
 _1- Generate an authentication URL_  
 ```sh
 python storage-sample.py --noauth_local_webserver
