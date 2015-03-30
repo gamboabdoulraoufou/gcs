@@ -85,7 +85,7 @@ To generate a client secrets file:
 
 #### 2-2-3- Some examples of API V1 methodes on `bucket` ans `object` 
 For more details [log here](https://cloud.google.com/storage/docs/json_api/v1/)   
-**Bucket**  
+ 
 ```python
 # Create bucket
 req = client.buckets().insert(
@@ -97,7 +97,7 @@ print json.dumps(resp, indent=2)
 # Delete bucket
 client.buckets().delete(bucket=bucket_name).execute()
 ```
-**Object**
+
 ```python
 # Create object
 # The destination object resource is entirely optional. If empty, we use
