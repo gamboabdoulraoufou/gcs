@@ -100,8 +100,6 @@ client.buckets().delete(bucket=bucket_name).execute()
 
 ```python
 # Create object
-# The destination object resource is entirely optional. If empty, we use
-# the source object's metadata.
 if reuse_metadata:
     destination_object_resource = {}
 else:
@@ -117,7 +115,9 @@ req = client.objects().copy(
         body=destination_object_resource)
 resp = req.execute()
 print json.dumps(resp, indent=2)
+```
 
+```python
 # List objects
 fields_to_return = 'nextPageToken,items(bucket,name,metadata(my-key))'
 req = client.objects().list(
@@ -125,13 +125,13 @@ req = client.objects().list(
         fields=fields_to_return,    # optional
         maxResults=42)              # optional
 
-# If you have too many items to list in one request, list_next() will
-# automatically handle paging with the pageToken.
 while req is not None:
     resp = req.execute()
     print json.dumps(resp, indent=2)
     req = client.objects().list_next(req, resp)
+```
 
+```python
 # Get Metadata
 req = client.objects().get(
         bucket=bucket_name,
@@ -140,7 +140,9 @@ req = client.objects().get(
         generation=generation)                    # optional
 resp = req.execute()
 print json.dumps(resp, indent=2)
+```
 
+```python
 # Get Payload Data
 req = client.objects().get_media(
         bucket=bucket_name,
