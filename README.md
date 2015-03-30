@@ -46,7 +46,7 @@ update gsutil
 ```
 
 ### 2- Set-up access to protected data
-**Using Credentials**
+#### 2-1- Using Credentials
 ```sh
 # 1- Open new command prompt instance  
 
@@ -65,15 +65,15 @@ gsutil config
 
 ```
 
-**Using JSON API for Python**  
-_1- Set up environment_
+#### 2-2- Using JSON API for Python**  
+**1- Set up environment**
 ```sh
 virtualenv env
 ./env/bin/pip install --upgrade google-api-python-client httplib2 argparse
 source ./env/bin/activate
 ```
 
-_2- Create a client secrets file_  
+**2- Create a client secrets file**  
 To generate a client secrets file:    
 1- Go to the Google Developers Console.    
 2- Select a project to which the client ID will be associated.  
@@ -83,7 +83,7 @@ To generate a client secrets file:
 6- Click Create Client ID.  
 7- Click Download JSON  
 
-_3- Create your code file_
+**3- Create your code file**
 ```python
 """Command-line skeleton application for Cloud Storage API.
 Usage:
@@ -179,10 +179,10 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-_4- Run the sample_
-1- Generate an authentication URL  
+**4- Run the sample**
+_1- Generate an authentication URL_  
 ```sh
 python storage-sample.py --noauth_local_webserver
 ```
-2- Open the authentication URL and click Accept_  
-3- Copy the code and complete the authentication process_  
+_2- Open the authentication URL and click Accept_  
+_3- Copy the code and complete the authentication process_  
