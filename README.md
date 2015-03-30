@@ -65,7 +65,7 @@ gsutil config
 
 ```
 
-**Using JSON API for Python**
+**Using JSON API for Python**  
 _1- Set up environment_
 ```sh
 virtualenv env
