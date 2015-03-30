@@ -1,7 +1,7 @@
-# Google Cloud Storage
+## Google Cloud Storage
 In this post I explain briefly how to deal with Google Cloud Storage on a linux environment
 
-**1- Install the prerequisites**
+### 1- Install the prerequisites
 To use gsutil, you must have Python 2.6.x or 2.7.x installed on your computer
 
 ```sh
@@ -15,7 +15,7 @@ sudo apt-get update
 sudo apt-get install python2.7
 ```
 
-## 1- Install gsutils tools
+### 1- Install gsutils tools
 Install gsutil
 
 
