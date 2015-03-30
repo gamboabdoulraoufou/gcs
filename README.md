@@ -85,15 +85,10 @@ To generate a client secrets file:
 
 **3- Create your code file**
 ```python
-"""Command-line skeleton application for Cloud Storage API.
-Usage:
-  $ python storage-sample.py
-
+"""
 You can also get help on all the command-line flags the program understands
 by running:
-
   $ python storage-sample.py --help
-
 """
 
 import argparse
