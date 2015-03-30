@@ -44,6 +44,19 @@ export PATH=${PATH}:$HOME/gcs/gsutil
 update gsutil
 ```
 
-
-**Créer un utilusateur sparkmanager**
+### Set-up access to protected data
+**Credentials**
 ```sh
+# 1- Open new command prompt instance
+# 2- Run this code
+gsutil config
+# 3- Copy and paste the URL into a browser window
+# 4- Clic the allow access button
+# 5- Copy the authorization code that appears on the next page into the gsutil prompt and press Enter
+# 6- Log in to the Google Developers Console to find a project ID you can specify as the default project
+# 7- Copy and paste the project ID into gsutil
+```
+
+**OAuth 2.0**
+
+
