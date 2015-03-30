@@ -1,6 +1,7 @@
 ## Google Cloud Storage
 This post provides a quick and easy way to get started with Google Cloud Storage on a linux environment with gsutil tool. It shows you how to:
 - Install gsutils tools
+- Set up access to protected data
 - Create and delete a bucket
 - Upload, delete and move objects
 - List your buckets and objects
@@ -44,7 +45,7 @@ export PATH=${PATH}:$HOME/gcs/gsutil
 update gsutil
 ```
 
-### Set-up access to protected data
+### 2- Set-up access to protected data
 **Using Credentials**
 ```sh
 # 1- Open new command prompt instance
