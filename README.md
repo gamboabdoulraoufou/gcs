@@ -93,7 +93,9 @@ req = client.buckets().insert(
         body={'name': bucket_name})
 resp = req.execute()
 print json.dumps(resp, indent=2)
+```
 
+```python
 # Delete bucket
 client.buckets().delete(bucket=bucket_name).execute()
 ```
@@ -132,17 +134,6 @@ while req is not None:
 ```
 
 ```python
-# Get Metadata
-req = client.objects().get(
-        bucket=bucket_name,
-        object=object_name,
-        fields='bucket,name,metadata(my-key)',    # optional
-        generation=generation)                    # optional
-resp = req.execute()
-print json.dumps(resp, indent=2)
-```
-
-```python
 # Get Payload Data
 req = client.objects().get_media(
         bucket=bucket_name,
@@ -163,6 +154,17 @@ print fh.getvalue()
 client.objects().delete(
         bucket=bucket_name,
         object=object_name).execute()
+```
+
+```python
+# Get Metadata
+req = client.objects().get(
+        bucket=bucket_name,
+        object=object_name,
+        fields='bucket,name,metadata(my-key)',    # optional
+        generation=generation)                    # optional
+resp = req.execute()
+print json.dumps(resp, indent=2)
 ```
 
 #### 2-2-4- Complete example: loading data
