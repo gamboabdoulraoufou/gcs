@@ -17,6 +17,9 @@ sudo apt-get update
 
 # Install python
 sudo apt-get install python2.7
+
+# Install virtual env
+sudo apt-get install python-virtualenv
 ```
 
 ### 1- Install gsutils tools
