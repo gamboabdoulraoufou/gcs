@@ -2,11 +2,8 @@
 This post provides a quick and easy way to get started with Google Cloud Storage on a linux environment with gsutil tool. It shows you how to:
 - Install gsutils tools
 - Set up access to protected data
-- Create and delete a bucket
-- Upload, delete and move objects
-- List your buckets and objects
-- Share objects and buckets
-
+- Create, list and delete a bucket
+- Upload, dowload, list, move and delete objects
 
 ### 0- Install the prerequisites
 To use gsutil, Python 2.6.x or 2.7.x is necessary
@@ -96,45 +93,47 @@ print json.dumps(resp, indent=2)
 ```
 
 ```python
+# List bucket
+fields_to_return = 'nextPageToken,items(name,location,timeCreated)'
+req = client.buckets().list(
+        project=project_id,
+        fields=fields_to_return,  # optional
+        maxResults=42)            # optional
+
+while req is not None:
+    resp = req.execute()
+    print json.dumps(resp, indent=2)
+    req = client.buckets().list_next(req, resp)
+```
+
+```python
 # Delete bucket
 client.buckets().delete(bucket=bucket_name).execute()
 ```
 
 ```python
-# Create object
-if reuse_metadata:
-    destination_object_resource = {}
-else:
-    destination_object_resource = {
-            'contentLanguage': 'en',
-            'metadata': {'my-key': 'my-value'},
-    }
-req = client.objects().copy(
-        sourceBucket=bucket_name,
-        sourceObject=old_object,
-        destinationBucket=bucket_name,
-        destinationObject=new_object,
-        body=destination_object_resource)
+# Upload object
+# The BytesIO object may be replaced with any io.Base instance.
+media = http.MediaIoBaseUpload(io.BytesIO('some data'), 'text/plain')
+# All object_resource fields here are optional.
+object_resource = {
+        'metadata': {'my-key': 'my-value'},
+        'contentLanguage': 'en',
+        'md5Hash': 'HlAhCgICSX+3m8OLat5sNA==',
+        'crc32c': 'rPZE1w==',
+
+}
+req = client.objects().insert(
+        bucket=bucket_name,
+        name=object_name,
+        body=object_resource,     # optional
+        media_body=media)
 resp = req.execute()
 print json.dumps(resp, indent=2)
 ```
 
 ```python
-# List objects
-fields_to_return = 'nextPageToken,items(bucket,name,metadata(my-key))'
-req = client.objects().list(
-        bucket=bucket_name,
-        fields=fields_to_return,    # optional
-        maxResults=42)              # optional
-
-while req is not None:
-    resp = req.execute()
-    print json.dumps(resp, indent=2)
-    req = client.objects().list_next(req, resp)
-```
-
-```python
-# Get Payload Data
+# Download object
 req = client.objects().get_media(
         bucket=bucket_name,
         object=object_name,
@@ -152,21 +151,24 @@ print fh.getvalue()
 ```
 
 ```python
+# List objects
+fields_to_return = 'nextPageToken,items(bucket,name,metadata(my-key))'
+req = client.objects().list(
+        bucket=bucket_name,
+        fields=fields_to_return,    # optional
+        maxResults=42)              # optional
+
+while req is not None:
+    resp = req.execute()
+    print json.dumps(resp, indent=2)
+    req = client.objects().list_next(req, resp)
+```
+
+```python
 # Delete object
 client.objects().delete(
         bucket=bucket_name,
         object=object_name).execute()
-```
-
-```python
-# Get Metadata
-req = client.objects().get(
-        bucket=bucket_name,
-        object=object_name,
-        fields='bucket,name,metadata(my-key)',    # optional
-        generation=generation)                    # optional
-resp = req.execute()
-print json.dumps(resp, indent=2)
 ```
 
 #### 2-2-4- Complete example: loading data
