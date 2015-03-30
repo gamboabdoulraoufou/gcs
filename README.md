@@ -73,16 +73,16 @@ source ./env/bin/activate
 ```
 
 _2- Create a client secrets file_
-To generate a client secrets file:
-1- Go to the Google Developers Console.
-2- Select a project to which the client ID will be associated.
-3- In the left sidebar, select APIs & auth > Credentials.
-4- Click Create new Client ID.
-5- In the Create Client ID window, choose Installed application.
-6- Click Create Client ID.
-7- Click Download JSON
+To generate a client secrets file:  
+1- Go to the Google Developers Console.  
+2- Select a project to which the client ID will be associated.  
+3- In the left sidebar, select APIs & auth > Credentials.  
+4- Click Create new Client ID.  
+5- In the Create Client ID window, choose Installed application.  
+6- Click Create Client ID.  
+7- Click Download JSON  
 
-_3- Create your code file
+_3- Create your code file_
 ```python
 """Command-line skeleton application for Cloud Storage API.
 Usage:
@@ -179,9 +179,9 @@ if __name__ == '__main__':
 ```
 
 _4- Run the sample_
-1- Generate an authentication URL
+1- Generate an authentication URL  
 ```sh
 python storage-sample.py --noauth_local_webserver
 ```
-_2- Open the authentication URL and click Accept_
-_3- Copy the code and complete the authentication process_
+2- Open the authentication URL and click Accept_  
+3- Copy the code and complete the authentication process_  
