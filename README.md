@@ -1,5 +1,5 @@
 ## Google Cloud Storage
-This post provides a quick and easy way to get started with Google Cloud Storage on a linux environment with gsutil tool. It shows you how to:
+This post provides a quick and easy way to get started with Google Cloud Storage on a linux environment. It shows you how to:
 - Install gsutils tools
 - Set up access to protected data
 - Create, list and delete a bucket
