@@ -40,7 +40,7 @@ export PATH=${PATH}:$HOME/gcs/gsutil
 
 # Restart your shell or terminal program
 
-#Updating gsutil
+# Updating gsutil
 update gsutil
 ```
 
