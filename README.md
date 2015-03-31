@@ -91,8 +91,8 @@ For more details [log here](https://cloud.google.com/storage/docs/json_api/v1/)
 ```python
 # Create bucket
 req = service.buckets().insert(
-        project=project_id,
-        body={'name': bucket_name})
+        project=_PROJECT_ID,
+        body={'name': _BUCKET_NAME})
 resp = req.execute()
 print json.dumps(resp, indent=2)
 ```
@@ -101,7 +101,7 @@ print json.dumps(resp, indent=2)
 # List bucket
 fields_to_return = 'nextPageToken,items(name,location,timeCreated)'
 req = service.buckets().list(
-        project=project_id,
+        project=_PROJECT_ID,
         fields=fields_to_return,  # optional
         maxResults=42)            # optional
 
@@ -113,7 +113,7 @@ while req is not None:
 
 ```python
 # Delete bucket
-service.buckets().delete(bucket=bucket_name).execute()
+service.buckets().delete(bucket=_BUCKET_NAME).execute()
 ```
 
 ```python
@@ -129,8 +129,8 @@ object_resource = {
 
 }
 req = service.objects().insert(
-        bucket=bucket_name,
-        name=object_name,
+        bucket=_BUCKET_NAME,
+        name=_PROJECT_NAME,
         body=object_resource,     # optional
         media_body=media)
 resp = req.execute()
@@ -140,8 +140,8 @@ print json.dumps(resp, indent=2)
 ```python
 # Download object
 req = service.objects().get_media(
-        bucket=bucket_name,
-        object=object_name,
+        bucket=_BUCKET_NAME,
+        object=_PROJECT_NAME,
         generation=generation)    # optional
 # The BytesIO object may be replaced with any io.Base instance.
 fh = io.BytesIO()
@@ -159,7 +159,7 @@ print fh.getvalue()
 # List objects
 fields_to_return = 'nextPageToken,items(bucket,name,metadata(my-key))'
 req = service.objects().list(
-        bucket=bucket_name,
+        bucket=_BUCKET_NAME,
         fields=fields_to_return,    # optional
         maxResults=42)              # optional
 
@@ -172,7 +172,7 @@ while req is not None:
 ```python
 # Delete object
 service.objects().delete(
-        bucket=bucket_name,
+        bucket=_BUCKET_NAME,
         object=object_name).execute()
 ```
 
@@ -191,9 +191,11 @@ from oauth2client import client
 from oauth2client import tools
 
 # Define sample variables.
+_PROJECT_ID = 'melodic-metrics-638'
+_PROJECT_NAME = ''
 _BUCKET_NAME = 'abdoul-test1'
 _API_VERSION = 'v1'
-project_id = 'melodic-metrics-638'
+
 
 # Parser for command-line arguments.
 parser = argparse.ArgumentParser(
