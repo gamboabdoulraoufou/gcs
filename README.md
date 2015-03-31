@@ -190,30 +190,25 @@ from oauth2client import file
 from oauth2client import client
 from oauth2client import tools
 
-# Define sample variables.
-_PROJECT_ID = 'melodic-metrics-638'
-_PROJECT_NAME = ''
-_BUCKET_NAME = 'abdoul-test1'
-_API_VERSION = 'v1'
-
-
 # Parser for command-line arguments.
 parser = argparse.ArgumentParser(
     description=__doc__,
     formatter_class=argparse.RawDescriptionHelpFormatter,
     parents=[tools.argparser])
 
+# Define sample variables.
+_PROJECT_ID = 'melodic-metrics-638'
+_PROJECT_NAME = 'DnaProject3'
+_API_VERSION = 'v1'
+_BUCKET_NAME = 'abdoul-test1'
+_OBJECT_NAME =
+_OBJECT_PATH = 
 
 # CLIENT_SECRETS is name of a file containing the OAuth 2.0 information for this
-# application, including client_id and client_secret. You can see the Client ID
-# and Client secret on the APIs page in the Cloud Console:
-# <https://console.developers.google.com/>
+# application, including client_id and client_secret. 
 CLIENT_SECRETS = os.path.join(os.path.dirname('client_secrets.json'), 'client_secrets.json')
 
 # Set up a Flow object to be used for authentication.
-# Add one or more of the following scopes. PLEASE ONLY ADD THE SCOPES YOU
-# NEED. For more information on using scopes please see
-# <https://developers.google.com/storage/docs/authentication#oauth>.
 FLOW = client.flow_from_clientsecrets(CLIENT_SECRETS,
   scope=[
       #'https://www.googleapis.com/auth/devstorage.full_control',
