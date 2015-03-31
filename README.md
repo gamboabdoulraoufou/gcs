@@ -85,7 +85,7 @@ To generate a client secrets file:
 6- Click Create Client ID.  
 7- Click Download JSON  
 
-#### 2-2-3- Some examples of API V1 methodes on `bucket` ans `object` 
+#### 2-2-3- Some examples of API V1 methodes on `bucket` and `object` 
 For more details [log here](https://cloud.google.com/storage/docs/json_api/v1/)   
  
 ```python
