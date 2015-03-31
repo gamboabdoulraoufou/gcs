@@ -90,7 +90,7 @@ For more details [log here](https://cloud.google.com/storage/docs/json_api/v1/)
  
 ```python
 # Create bucket
-req = client.buckets().insert(
+req = service.buckets().insert(
         project=project_id,
         body={'name': bucket_name})
 resp = req.execute()
@@ -100,7 +100,7 @@ print json.dumps(resp, indent=2)
 ```python
 # List bucket
 fields_to_return = 'nextPageToken,items(name,location,timeCreated)'
-req = client.buckets().list(
+req = service.buckets().list(
         project=project_id,
         fields=fields_to_return,  # optional
         maxResults=42)            # optional
@@ -108,12 +108,12 @@ req = client.buckets().list(
 while req is not None:
     resp = req.execute()
     print json.dumps(resp, indent=2)
-    req = client.buckets().list_next(req, resp)
+    req = service.buckets().list_next(req, resp)
 ```
 
 ```python
 # Delete bucket
-client.buckets().delete(bucket=bucket_name).execute()
+service.buckets().delete(bucket=bucket_name).execute()
 ```
 
 ```python
@@ -128,7 +128,7 @@ object_resource = {
         'crc32c': 'rPZE1w==',
 
 }
-req = client.objects().insert(
+req = service.objects().insert(
         bucket=bucket_name,
         name=object_name,
         body=object_resource,     # optional
@@ -139,7 +139,7 @@ print json.dumps(resp, indent=2)
 
 ```python
 # Download object
-req = client.objects().get_media(
+req = service.objects().get_media(
         bucket=bucket_name,
         object=object_name,
         generation=generation)    # optional
@@ -158,7 +158,7 @@ print fh.getvalue()
 ```python
 # List objects
 fields_to_return = 'nextPageToken,items(bucket,name,metadata(my-key))'
-req = client.objects().list(
+req = service.objects().list(
         bucket=bucket_name,
         fields=fields_to_return,    # optional
         maxResults=42)              # optional
@@ -166,12 +166,12 @@ req = client.objects().list(
 while req is not None:
     resp = req.execute()
     print json.dumps(resp, indent=2)
-    req = client.objects().list_next(req, resp)
+    req = service.objects().list_next(req, resp)
 ```
 
 ```python
 # Delete object
-client.objects().delete(
+service.objects().delete(
         bucket=bucket_name,
         object=object_name).execute()
 ```
@@ -179,12 +179,6 @@ client.objects().delete(
 #### 2-2-4- Complete example: loading data
 **Create sample file**
 ```python
-"""
-You can also get help on all the command-line flags the program understands
-by running:
-  $ python storage-sample.py --help
-"""
-
 import argparse
 import httplib2
 import os
@@ -197,8 +191,9 @@ from oauth2client import client
 from oauth2client import tools
 
 # Define sample variables.
-_BUCKET_NAME = '[[INSERT_YOUR_BUCKET_NAME_HERE]]'
+_BUCKET_NAME = 'abdoul-test1'
 _API_VERSION = 'v1'
+project_id = 'melodic-metrics-638'
 
 # Parser for command-line arguments.
 parser = argparse.ArgumentParser(
@@ -211,7 +206,7 @@ parser = argparse.ArgumentParser(
 # application, including client_id and client_secret. You can see the Client ID
 # and Client secret on the APIs page in the Cloud Console:
 # <https://console.developers.google.com/>
-CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), 'client_secrets.json')
+CLIENT_SECRETS = os.path.join(os.path.dirname('client_secrets.json'), 'client_secrets.json')
 
 # Set up a Flow object to be used for authentication.
 # Add one or more of the following scopes. PLEASE ONLY ADD THE SCOPES YOU
@@ -219,8 +214,8 @@ CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), 'client_secrets.json')
 # <https://developers.google.com/storage/docs/authentication#oauth>.
 FLOW = client.flow_from_clientsecrets(CLIENT_SECRETS,
   scope=[
-      'https://www.googleapis.com/auth/devstorage.full_control',
-      'https://www.googleapis.com/auth/devstorage.read_only',
+      #'https://www.googleapis.com/auth/devstorage.full_control',
+      #'https://www.googleapis.com/auth/devstorage.read_only',
       'https://www.googleapis.com/auth/devstorage.read_write',
     ],
     message=tools.message_if_missing(CLIENT_SECRETS))
