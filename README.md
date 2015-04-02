@@ -1,5 +1,5 @@
 ## Google Cloud Storage
-This post provides a quick and easy way to get started with Google Cloud Storage using gsuil tools and JSON API. It shows you how to:
+This post provides a quick and easy way to get started with Google Cloud Storage using gsutil tools and JSON API. It shows you how to:
 - Install gsutils tools
 - Set up access to protected data
 - Create, list and delete a bucket
