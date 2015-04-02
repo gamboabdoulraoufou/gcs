@@ -134,8 +134,7 @@ from oauth2client.file import Storage as fileStorage
 from oauth2client import client
 from oauth2client import tools
 
-# Define arguments 
-#parser = argparse.ArgumentParser()
+# Define arguments
 parser = argparse.ArgumentParser(
     description=__doc__,
     formatter_class=argparse.RawDescriptionHelpFormatter,
