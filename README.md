@@ -85,7 +85,7 @@ gsutil cp <object> gs://<bucket-name>
 gsutil ls gs://<bucket-name>
 
 # download objetc
-gsutil cp gs://<bucket-name>/foo.txt -
+gsutil cp gs://<bucket-name>/<object> -
 
 # Delete object
 gsutil rm gs://<bucket>/<object>
