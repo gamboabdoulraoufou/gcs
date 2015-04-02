@@ -156,8 +156,8 @@ parser.add_argument('--object_dest', default=None)
 args = parser.parse_args()
 
 # Define some variables
-_PROJECT_ID = 'melodic-metrics-638'
-_PROJECT_NAME = 'DnaProject3'
+_PROJECT_ID = 'your_project_id'
+_PROJECT_NAME = 'your_project_name'
 _API_VERSION = 'v1'
 
 # CLIENT_SECRETS is name of a file containing the OAuth 2.0 information for this
