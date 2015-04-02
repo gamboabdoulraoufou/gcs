@@ -3,7 +3,7 @@ This post provides a quick and easy way to get started with Google Cloud Storage
 - Install gsutils tools
 - Set up access to protected data
 - Create, list and delete a bucket
-- Upload, dowload, list, move and delete objects
+- Upload, download, list and delete objects
 
 ### 0- Install the prerequisites
 To use gsutil, Python 2.6.x or 2.7.x is necessary
