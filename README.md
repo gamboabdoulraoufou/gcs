@@ -374,20 +374,20 @@ _3- Copy the code and complete the authentication process_
 _2- Example_
 ```sh
 # create 2 buckets
-python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'bucket' --bucket_name 'abdoul-test1' # -- OK
-python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'bucket' --bucket_name 'abdoul-test2' # -- OK
+python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'bucket' --bucket_name 'abdoul-test1' # 
+python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'bucket' --bucket_name 'abdoul-test2' # 
 
 # upload file to bucket 1
-python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'object' --bucket_name 'abdoul-test1' --object_name 'fichier1.txt' --object_source   '/home/araoufougambo_netbooster_com/gcs/download/fichier1.txt' # -- OK
+python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'object' --bucket_name 'abdoul-test1' --object_name 'fichier1.txt' --object_source   '/home/araoufougambo_netbooster_com/gcs/download/fichier1.txt' #
 
 # get file from bucket 1 
-python gcs_api.py --noauth_local_webserver --methode 'get_object' --objet 'object' --bucket_name 'abdoul-test1' --object_name 'fichier1.txt' --object_dest '/home/araoufougambo_netbooster_com/gcs/download/fichier1_download.txt' # -- OK
+python gcs_api.py --noauth_local_webserver --methode 'get_object' --objet 'object' --bucket_name 'abdoul-test1' --object_name 'fichier1.txt' --object_dest '/home/araoufougambo_netbooster_com/gcs/download/fichier1_download.txt'
 
 # del file of bucket 1
-python gcs_api.py --noauth_local_webserver --methode 'delete' --objet 'object' --bucket_name 'abdoul-test1' --object_name 'fichier1.txt' # -- OK
+python gcs_api.py --noauth_local_webserver --methode 'delete' --objet 'object' --bucket_name 'abdoul-test1' --object_name 'fichier1.txt'
 
 # del bucket 2
-python gcs_api.py --noauth_local_webserver --methode 'delete' --objet 'bucket' --bucket_name 'abdoul-test2' # -- OK
+python gcs_api.py --noauth_local_webserver --methode 'delete' --objet 'bucket' --bucket_name 'abdoul-test2'
 ```
 
 _3- Loading all file from given repository to google cloud storage script_
@@ -400,7 +400,7 @@ from os.path import isfile, join
 import argparse
 
 # Loading all file from given repository to google cloud storage
-# Usage example: python loadin_files_togcs.py --bucket_name 'abdoul-test1' --object_source '/home/araoufougambo_netbooster_com/gcs/download/'
+# Usage example: python loadin_files_togcs.py --bucket_name 'abdoul-test1' --object_source '~/gcs/download/'
 
 # Define arguments
 parser = argparse.ArgumentParser()
