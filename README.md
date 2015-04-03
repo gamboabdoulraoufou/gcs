@@ -65,7 +65,7 @@ gsutil config
 
 ```
 
-#### 2-2- Manage data
+#### 2-2- Managing data
 ```sh
 # Create bucket
 gsutil mb gs://<bucket-name>
@@ -363,7 +363,7 @@ if __name__ == '__main__':
 
 ```
 
-#### 3-3-Managing CGS whith API 
+#### 3-3-Managing CGS bucket and object whith API 
 _1- Generate an authentication URL_  
 ```sh
 python gcs_api.py --noauth_local_webserver --methode 'create' --objet 'bucket' --bucket_name 'abdoul-test1'
